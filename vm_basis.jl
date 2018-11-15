@@ -1,3 +1,4 @@
+include("delta.jl")
 include("eis_series.jl")
 
 #This file contains functions to compute the dimension of spaces of modular forms or cusp 
@@ -21,7 +22,7 @@ function dim_Sk(k)
 		dim = floor((k-12)/12) + 1
 	end
 
-	return dim
+	return Int64(dim) 	#otherwise returns a float
 end
 
 
@@ -41,11 +42,12 @@ function dim_Mk(k)
                 dim = floor(k/12) + 1
 	end
 
-        return dim
+        return Int64(dim) 	#otherwise returns a float
 end
 
 
 
+#Algorithm uses the proof of Lemma 2.20 from William A. Stein
 #Return the Victor Miller basis of the space of cusp forms of weight k and level 1 
 #(i.e. S_k) to precision prec as an array whose entries are power series in ZZ[[var]]
 function victor_miller_basis(k, prec, var = "q")
@@ -94,14 +96,29 @@ function victor_miller_basis(k, prec, var = "q")
         E6 = eisenstein_series_qexp(k, prec)
         F4 = (-8//bernoulli(4))*E4
         F6 = (-12//bernoulli(6))*E6
+		
+	#construct a dx1 matrix where d = dim(Sk)
+	d = dim_Sk(k)
+	R, q = PowerSeriesRing(QQ, prec, "q") 	#not sure about QQ, prec
+	S = MatrixSpace(R, d, 1)
+	g = S()
 
-	
-	#want a (d x prec) matrix where d = dim(Sk)
-	#missing part
+	#construct each g_j
+	for j in 1:d
+		h = (delta_qexp(prec)^j)*(F6^(2(d-j)+b))*(F4^a)
+		println(truncate(h,prec))
+		#problem with PowerSeriesRing
+		#g[j,1] = (delta_qexp(prec)^j)*(F6^(2(d-j)+b))*(F4^a)
+	end
+
+	#construct f_i from the g_j by Gauss elimination
+	#MISSING PART
 
 	#check a and b
-	println(a)
-	println(b)
-	return "output still missing"
+	#println(a)
+	#println(b)
+	
+	#need to correct output
+	#return g
 
 end

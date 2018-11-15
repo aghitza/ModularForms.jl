@@ -25,7 +25,7 @@ function eisenstein_series_poly(k, prec)
 	#sum of sigma function times q^n
 	sigmasum = 0
 	for n in 2:prec
-		sigmasum += sigma(k-1,n)*q^n
+		sigmasum += sigma(n,k-1)*q^n
 	end
 
 	#qexp += -a0 + q + sigmasum 		#there is a bug here
@@ -38,7 +38,7 @@ end
 
 
 #Compute the sum of t-th powers of positive divisors of n (t>=0, n>=1)
-function sigma(t, n)
+function sigma(n, t)
 	
 	#error 
 	if t<0 

@@ -5,7 +5,7 @@
 #Fmpz_poly object, normalised such that coefficients are integers with no common factor 
 function eisenstein_series_poly(k, prec)
 
-	R, q = PowerSeriesRing(QQ, prec, "q") 	#QQ as ring to prevent bug at the end
+	R, q = PolynomialRing(QQ, "q") 	#QQ as ring to prevent bug at the end
 	qexp = R(0)
 
         if k%2 != 0 || k < 2
@@ -28,7 +28,7 @@ function eisenstein_series_poly(k, prec)
 		sigmasum += sigma2(n,k-1)*q^n
 	end
 
-	qexp += -a0 + q + sigmasum 		
+	qexp += a0 + q + sigmasum 		
 	
 	return qexp
 	

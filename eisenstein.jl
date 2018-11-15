@@ -3,7 +3,6 @@
 
 #Return the q-expansion up to precision prec of the weight k Eisenstein series as a FLINT 
 #Fmpz_poly object, normalised such that coefficients are integers with no common factor 
-
 function eisenstein_series_poly(k, prec)
 
         R, q = PolynomialRing(ZZ, "q")
@@ -15,26 +14,30 @@ function eisenstein_series_poly(k, prec)
 
         if prec < 0
                 error("prec must be an even nonnegative integer")
-        elseif prec ==0
+        elseif prec == 0
                 return qexp
         end
 
 	
 	#initialise a0
-	a0 = - bernoulli(k) / 2k
+	a0 = - bernoulli(k) // 2k 	#bernoulli is fmpq so need //
 
-	#sum sigma function
+	#sum of sigma function times q^n
+	sigmasum = 0
 	for n in 2:prec
-		sigma(k-1,n)
+		sigmasum += sigma(k-1,n)*q^n
 	end
 
+	#qexp += -a0 + q + sigmasum 		#there is a bug here
+	
+	return qexp
+	
 end
 
 
 
 
-#Compute the sum of t-th powers of positive divisors of n
-#t>=0, n>=1
+#Compute the sum of t-th powers of positive divisors of n (t>=0, n>=1)
 function sigma(t, n)
 	
 	#error 

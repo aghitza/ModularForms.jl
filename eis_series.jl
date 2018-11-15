@@ -5,10 +5,23 @@ include("eisenstein.jl") #need sigma function
 #The normalisation is such that the linear coefficient is 1. 
 function eisenstein_series_qexp(k, prec, K=QQ, var="q") 
 
+	#initialise
+	#now only works for default values QQ and "q"
+	R, q = PolynomialRing(QQ, "q") 
+	#R, q = PowerSeriesRing(QQ, prec, "q")   #works as well, prec is random
+	qexp = fmpz(0)
+
+
 	#error handling
 	if k%2 != 0 || k<2
 		error("k must be an even positive integer")
 	end
+	if prec < 0
+		error("prec must be an even nonnegative integer")
+	elseif prec == 0
+		return qexp
+	end
+
 
 	a0 = - bernoulli(k) // 2k
 	
@@ -20,10 +33,6 @@ function eisenstein_series_qexp(k, prec, K=QQ, var="q")
 	#		error("The numerator of -B_k/2k must be invertible in the ring K")
 	
 	
-	#now only works for default values QQ and "q"
-	R, q = PolynomialRing(QQ, "q")
-	#R, q = PowerSeriesRing(QQ, prec, "q") 	#works as well, prec is random
-	qexp = fmpz(0)
 	for n in 1:prec-1
 		qexp += sigma(n,k-1)*q^n
 	end

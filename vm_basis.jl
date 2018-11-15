@@ -1,5 +1,7 @@
 include("delta.jl")
-include("eis_series.jl")
+include("eis_series.jl") 
+include("eisenstein.jl") #temporary to use eisenstein_series_poly
+include("get_f.jl") #later: add get_f to file
 
 #This file contains functions to compute the dimension of spaces of modular forms or cusp 
 #forms, and a function to compute the Victor Miller basis for a given weight k to any desired 
@@ -92,33 +94,29 @@ function victor_miller_basis(k, prec, var = "q")
 	end
 
 
-	E4 = eisenstein_series_qexp(k, prec)
-        E6 = eisenstein_series_qexp(k, prec)
-        F4 = (-8//bernoulli(4))*E4
+	#E4 = eisenstein_series_qexp(k, prec)
+        #E6 = eisenstein_series_qexp(k, prec)
+        E4 = eisenstein_series_poly(4, prec)  	#temp
+	E6 = eisenstein_series_poly(6, prec) 	#temp
+	F4 = (-8//bernoulli(4))*E4
         F6 = (-12//bernoulli(6))*E6
-		
-	#construct a dx1 matrix where d = dim(Sk)
+	
+	#construct a dx1 matrix g where d = dim(Sk)
 	d = dim_Sk(k)
-	R, q = PowerSeriesRing(QQ, prec, "q") 	#not sure about QQ, prec
-	S = MatrixSpace(R, d, 1)
-	g = S()
-
-	#construct each g_j
-	for j in 1:d
-		h = (delta_qexp(prec)^j)*(F6^(2(d-j)+b))*(F4^a)
-		println(truncate(h,prec))
+	#R, q = PowerSeriesRing(ZZ, prec, "q") 	#not sure about ZZ, prec
+	if d == 0
+		return []
+	end
+	g = [truncate((delta_qexp(prec)^j)*(F6^(2(d-j)+b))*(F4^a),prec) for j in 1:d]
+	
+	#for j in 1:d
 		#problem with PowerSeriesRing
 		#g[j,1] = (delta_qexp(prec)^j)*(F6^(2(d-j)+b))*(F4^a)
-	end
+	#end
 
-	#construct f_i from the g_j by Gauss elimination
-	#MISSING PART
+	#construct f_i from the g_j
+	basis_f = get_f(g,d) 
 
-	#check a and b
-	#println(a)
-	#println(b)
-	
-	#need to correct output
-	#return g
+	return basis_f
 
 end

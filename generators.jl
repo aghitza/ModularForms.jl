@@ -13,7 +13,8 @@ function Delta16(prec=10, var="q")
 	#cusp form of weight 16 to precision prec
 	delta_times_E4 = delta_qexp(prec, var)*eisenstein_series_qexp(4, prec)
 
-	return (-8/bernoulli(4))*delta_times_E4
+	return (-8//bernoulli(4))*delta_times_E4
+end
 
 
 #Return the q expansion for Delta18 to precision prec
@@ -22,7 +23,8 @@ function Delta18(prec=10, var="q")
         #cusp form of weight 18 to precision prec
         delta_times_E6 = delta_qexp(prec, var)*eisenstein_series_qexp(6, prec)
 
-        return (-12/bernoulli(6))*delta_times_E6
+        return (-12//bernoulli(6))*delta_times_E6
+end
 
 
 #Return the q expansion for Delta20 to precision prec
@@ -31,4 +33,5 @@ function Delta20(prec=10, var="q")
         #cusp form of weight 20 to precision prec
         delta_times_E4_twice = delta_qexp(prec, var)*(eisenstein_series_qexp(4, prec)^2)
 
-        return ((-8/bernoulli(4))^2)*delta_times_E4_twice		#must do //2?
+        return ((-8//bernoulli(4))^2)*delta_times_E4_twice		#must do //2?
+end

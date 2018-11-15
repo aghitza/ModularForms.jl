@@ -1,4 +1,4 @@
-include("eisenstein.jl") #need sigma function
+include("eisenstein.jl") #need sigma2 function
 
 #Return the q-expansion of the normalised weight k Eisenstein series on the modular group 
 #to precision prec in the ring K (default is QQ). 
@@ -7,8 +7,8 @@ function eisenstein_series_qexp(k, prec, K=QQ, var="q")
 
 	#initialise
 	#now only works for default values QQ and "q"
-	R, q = PolynomialRing(QQ, "q") 
-	#R, q = PowerSeriesRing(QQ, prec, "q")   #works as well, prec is random
+	#R, q = PolynomialRing(QQ, "q") 
+	R, q = PowerSeriesRing(QQ, prec, "q")   #need to change prec?
 	qexp = fmpz(0)
 
 
@@ -34,7 +34,7 @@ function eisenstein_series_qexp(k, prec, K=QQ, var="q")
 	
 	
 	for n in 1:prec-1
-		qexp += sigma(n,k-1)*q^n
+		qexp += sigma2(n,k-1)*q^n
 	end
 	
 	qexp += a0

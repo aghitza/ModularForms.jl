@@ -25,7 +25,7 @@ function eisenstein_series_qexp(k, prec, K=QQ, var="q")
 	#R, q = PowerSeriesRing(QQ, prec, "q") 	#works as well, prec is random
 	qexp = fmpz(0)
 	for n in 1:prec-1
-		qexp += sigma(k-1,n)*q^n
+		qexp += sigma(n,k-1)*q^n
 	end
 	
 	qexp += a0

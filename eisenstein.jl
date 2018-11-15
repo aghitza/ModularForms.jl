@@ -1,9 +1,13 @@
+#Note: in order to use the function one needs to run "using Nemo"
+
+
 #Return the q-expansion up to precision prec of the weight k Eisenstein series as a FLINT 
 #Fmpz_poly object, normalised such that coefficients are integers with no common factor 
 
 function eisenstein_series_poly(k, prec)
 
-        qexp = 0
+        R, q = PolynomialRing(ZZ, "q")
+	qexp = R(0)
 
         if k%2 != 0 || k < 2
                 error("k must be an even positive integer")
@@ -15,6 +19,39 @@ function eisenstein_series_poly(k, prec)
                 return qexp
         end
 
+	
+	#initialise a0
+	a0 = - bernoulli(k) / 2k
+
+	#sum sigma function
+	for n in 2:prec
+		sigma(k-1,n)
+	end
+
 end
 
 
+
+
+#Compute the sum of t-th powers of positive divisors of n
+#t>=0, n>=1
+function sigma(t, n)
+	
+	#error 
+	if t<0 
+		error("t must be a nonnegative integer")
+	elseif n<1
+		error("n must be a positive integer")
+	end
+
+	sum = 0
+	for d in 1:n
+		#println(sum)
+		if n%d == 0
+			sum += d^t
+		end
+	end
+
+	return sum
+
+end

@@ -9,7 +9,7 @@ function eisenstein_series_qexp(k, prec, K=QQ, var="q")
 	#now only works for default values QQ and "q"
 	#R, q = PolynomialRing(QQ, "q") 
 	R, q = PowerSeriesRing(QQ, prec, "q")   #need to change prec?
-	qexp = fmpz(0)
+	qexp = R(0)
 
 
 	#error handling

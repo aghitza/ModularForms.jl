@@ -47,7 +47,8 @@ end
 #weight k, for p prime
 function hecke_operator_prime(f, p, k, prec)
 
-        T_p = 0
+	R = parent(f)
+        T_p = R(0)
         for m in 1:prec                                                 #check
                 a_mp = coeff(f, m*p)
                 coef = a_mp

@@ -1,3 +1,4 @@
+include("big-oh-test.jl")
 include("delta-test.jl")
 include("eisenstein-test.jl")
 include("generators-test.jl")
@@ -5,6 +6,7 @@ include("victormiller-test.jl")
 include("hecke-test.jl")
 
 function test_all()
+	test_big_oh()
 	test_delta()
 	test_eis_series()
 	test_generators()

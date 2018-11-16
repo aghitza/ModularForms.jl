@@ -5,12 +5,14 @@ include("../src/hecke.jl")
 function test_hecke_on_qexp()
         print("hecke.qexp...")
 	
-	#R, q = PolynomialRing(QQ, "q")
-	#delta = delta_qexp(30)
-	#h1 = hecke_operator_on_qexp(delta, 1, 12, 10)
-	#h2 = truncate(hecke_operator_on_qexp(delta, 3, 12, 10), 7)
+	delta = delta_qexp(30)
+	#h1 = hecke_operator_on_qexp(delta, 1, 12, 30)
 	#@test h1 == delta
-	#@test h2 == 252q - 6048q^2 + 63504q^3 - 370944q^4 + 1217160q^5 - 1524096q^6
+	h2 = truncate(hecke_operator_on_qexp(delta, 3, 12, 10), 7)
+	S = parent(h2)
+	q = gen(S)
+	@test h2 == 	252q - 6048q^2 + 63504q^3 - 370944q^4 + 
+			1217160q^5 - 1524096q^6 + O(q^7)
 
         println("PASS")
 end
@@ -38,10 +40,10 @@ function test_hecke_vm()
 			4306546080*q^5 + 67844160144*q^6 + O(q^7)
 
 	#test hecke_operator_on_basis
-	#H_basis = hecke_operator_on_basis(B, 3, 24)
-	#R = base_ring(h1)
-	#S = MatrixSpace(R, 2, 2)
-	#matrix = S([195660 -982499328; -48 143820]) 	
+	H_basis = hecke_operator_on_basis(B, 3, 24)
+	R = base_ring(h1)
+	S = MatrixSpace(R, 2, 2)
+	matrix = S([195660 -982499328; -48 143820]) 	
 
 	println("PASS")
 end

@@ -1,5 +1,4 @@
 #This file contains the functions hecke_operator_on_basis and hecke_operator_on_qexp 
-include("hecke_prime.jl")
 include("vm_basis.jl") 
 
 

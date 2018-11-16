@@ -1,5 +1,6 @@
 #Construct a relative power series to precision prec (default: 10) from a polynomial f 
-#over the same ring as f in the variable var (default: "q")
+#over the same ring as f in the variable var (default: "q").
+#We assume that the polynomial f is correct up to precision prec. 
 function big_oh(f, prec=10, var="q")
 
 	#initialise 

@@ -1,5 +1,3 @@
-include("eisenstein.jl") #need sigma2 function
-
 #Return the q-expansion of the normalised weight k Eisenstein series on the modular group 
 #to precision prec in the ring K (default is QQ). 
 #The normalisation is such that the linear coefficient is 1. 
@@ -34,7 +32,7 @@ function eisenstein_series_qexp(k, prec, K=QQ, var="q")
 	
 	
 	for n in 1:prec-1
-		qexp += sigma2(n,k-1)*q^n
+		qexp += sigma(fmpz(n),k-1)*q^n
 	end
 	
 	qexp += a0

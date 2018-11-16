@@ -1,6 +1,3 @@
-#Note: in order to use the function one needs to run "using Nemo"
-
-
 #Return the q-expansion up to precision prec of the weight k Eisenstein series as a FLINT 
 #Fmpz_poly object, normalised such that coefficients are integers with no common factor 
 function eisenstein_series_poly(k, prec)
@@ -25,36 +22,11 @@ function eisenstein_series_poly(k, prec)
 	#sum of sigma function times q^n
 	sigmasum = 0
 	for n in 2:prec-1
-		sigmasum += sigma2(n,k-1)*q^n
+		sigmasum += sigma(fmpz(n),k-1)*q^n
 	end
 
 	qexp += a0 + q + sigmasum 		
 	
 	return qexp
 	
-end
-
-
-
-
-#Compute the sum of t-th powers of positive divisors of n (t>=0, n>=1)
-function sigma2(n, t)
-	
-	#error 
-	if t<0 
-		error("t must be a nonnegative integer")
-	elseif n<1
-		error("n must be a positive integer")
-	end
-
-	sum = 0
-	for d in 1:n
-		#println(sum)
-		if n%d == 0
-			sum += d^t
-		end
-	end
-
-	return sum
-
 end

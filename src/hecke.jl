@@ -1,5 +1,4 @@
 #This file contains the functions hecke_operator_on_basis and hecke_operator_on_qexp. 
-#NOTE: the functions now only work for cusp forms.
 include("vm_basis.jl")
 
 
@@ -18,7 +17,7 @@ function hecke_operator_on_basis(B, n, k)
 
 	#construct dxd matrix
 	ring = base_ring(B[1])
-	d = dim_Sk(k)
+	d = length(B)			#check if this is always correct
 	S = MatrixSpace(ring, d, d)
 	matrix = S()
 
@@ -26,9 +25,17 @@ function hecke_operator_on_basis(B, n, k)
 	for j in 1:d
 		f = B[j]
 		T_f = hecke_operator_on_qexp(f, n, k, d+1)
-		for i in 1:d
-			#Tn for the jth element of B corresponds to the jth row
-			matrix[j,i] = coeff(T_f,i)
+		#check if cusp form
+		if d == dim_Sk(k)
+			for i in 1:d
+				#Tn for the jth element of B corresponds to the jth row
+				matrix[j,i] = coeff(T_f,i)
+			end
+		else
+			for i in 0:d-1
+				#Tn for the jth element of B corresponds to the jth row
+				matrix[j,i+1] = coeff(T_f,i)
+			end		
 		end
 	end
 
@@ -68,7 +75,7 @@ function hecke_operator_on_qexp(f, n, k, prec=nothing)
 	T_p = R(0)	
 
 	l = k-1
-	for m in 1:prec-1
+	for m in 0:prec-1		#start with 0 to deal with all modular forms
 		sum = 0
 		array = divisors(gcd(n,m)) 	#check if there is a quicker method
 		for i in 1:length(array)

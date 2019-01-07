@@ -8,22 +8,23 @@ export delta_poly, delta_qexp
 
 
 #Return the q-expansion of the (normalised) cusp form of weight 12 to precision prec 
-#(default: 10) as a polynomial over ZZ in the variable var (default: "q"). 
-function delta_poly(prec=10, var="q")
+#(default: 10) as a polynomial over K (default: ZZ) in the variable var (default: "q"). 
+function delta_poly(prec=10, var="q", K=ZZ)
 
 	R, q = PolynomialRing(ZZ, var)
 	delta = q*eta_qexp(24, prec-1, q) 
+	RR, q = PolynomialRing(K, var)
 
-	return delta
+	return RR(delta)
 end
 
 
 
 #Return the q-expansion of the (normalised) cusp form of weight 12 to precision prec 
-#(default: 10) as a power series over ZZ in the variable var (default: "q").
-function delta_qexp(prec=10, var="q") 
+#(default: 10) as a power series over K (default: ZZ) in the variable var (default: "q").
+function delta_qexp(prec=10, var="q", K=ZZ) 
 	
-	delta = delta_poly(prec, var)
+	delta = delta_poly(prec, var, K)
 	power_series = big_oh(delta, prec, var)
 
 	return power_series 

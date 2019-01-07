@@ -5,9 +5,9 @@ include("../src/hecke.jl")
 function test_hecke_on_qexp()
         print("hecke.qexp...")
 	
-	delta = delta_qexp(30)
-	#h1 = hecke_operator_on_qexp(delta, 1, 12, 30)
-	#@test h1 == delta
+	delta = delta_qexp(100)
+	h1 = hecke_operator_on_qexp(delta, 1, 12, 30)
+	@test h1 == delta_qexp(30)
 	h2 = truncate(hecke_operator_on_qexp(delta, 3, 12, 10), 7)
 	S = parent(h2)
 	q = gen(S)

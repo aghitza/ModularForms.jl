@@ -1,13 +1,12 @@
-#This file contains the functions hecke_operator_on_basis and hecke_operator_on_qexp.
+#This file contains the old and incorrect functions hecke_op_on_basis and hecke_op_on_qexp.
 #NOTE: the functions now only work for cusp forms.  
 include("vm_basis.jl") 
-
 
 #Compute the matrix of the Hecke operator Tn of weight k relative to the given basis B of 
 #q expansions for a space of cusp forms. 
 #NOTE: input B needs to be an array, output is a matrix. 
 #NOTE: now only works for space of cusp forms, not for space of all modular forms. 
-function hecke_operator_on_basis(B, n, k)
+function hecke_op_on_basis(B, n, k)
 	
 	#error handling
 	if n < 1
@@ -31,7 +30,7 @@ function hecke_operator_on_basis(B, n, k)
 	#compute Tn(f) to precision d+1 for each element f of B
 	for j in 1:d
 		f = B[j]
-		T_f = hecke_operator_on_qexp(f, n, k, d+1)
+		T_f = hecke_op_on_qexp(f, n, k, d+1)
 		for i in 1:d
 			#Tn for the jth element of B corresponds to the jth row 
 			matrix[j,i] = coeff(T_f,i)
@@ -96,7 +95,7 @@ end
 #Compute the image of the q expansion f of a modular form under the Hecke operator Tn of 
 #weight k.
 #Return a power series to precision prec (default: 10). 
-function hecke_operator_on_qexp(f, n, k, prec=10)	
+function hecke_op_on_qexp(f, n, k, prec=10)	
 	
 	if isprime(fmpz(n))
 		return hecke_operator_prime(f, n, k, prec)

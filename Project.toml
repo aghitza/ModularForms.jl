@@ -1,0 +1,8 @@
+name = "ModularForms"
+uuid = "6493d116-1219-11e9-17fe-8711157bfc19"
+authors = ["Lynn Engelberts <lengelberts@student.unimelb.edu.au>", "Alexandru Ghitza <aghitza@alum.mit.edu>"]
+version = "0.1.0"
+
+[deps]
+Nemo = "2edaba10-b0f1-5616-af89-8c11ac63239a"
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"

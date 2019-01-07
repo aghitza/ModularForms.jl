@@ -9,4 +9,4 @@ include("generators.jl")
 include("vm_basis.jl")
 include("hecke.jl")
 
-end
+end # module

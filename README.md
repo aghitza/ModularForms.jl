@@ -10,7 +10,12 @@ implementation of modular forms algorithms in Julia
 (v1.0) pkg> add Nemo
 ```
 3. Press Backspace to exit the package manager.
-4. Start using Nemo with:
+4. Start Julia from ModularForms.jl directory.
+5. Activate ModularForms.jl: press ] to access package manager, then
 ```
-julia> using Nemo
+(v1.0) pkg> activate .
+```
+6. (Optional) Test:
+```
+(v1.0) pkg> test
 ```

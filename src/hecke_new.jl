@@ -1,5 +1,40 @@
-#This file contains the function hecke_operator_on_qexp. 
-#NOTE: the function now only works for cusp forms.
+#This file contains the functions hecke_operator_on_basis and hecke_operator_on_qexp. 
+#NOTE: the functions now only work for cusp forms.
+include("vm_basis.jl")
+
+
+#Compute the matrix of the Hecke operator Tn of weight k relative to the given basis B 
+#of q-expansions for a space of cusp forms. 
+#NOTE: input B needs to be an array, output is a matrix. 
+function hecke_operator_on_basis(B, n, k)
+
+	#error handling
+	if n < 1
+		error("n (=$n) must be a positive integer")
+	end
+	if isa(B, Array) == false
+		error("B (=$B) must be an array")
+	end
+
+	#construct dxd matrix
+	ring = base_ring(B[1])
+	d = dim_Sk(k)
+	S = MatrixSpace(ring, d, d)
+	matrix = S()
+
+	#compute Tn(f) to precision d+1 for each element f of B
+	for j in 1:d
+		f = B[j]
+		T_f = hecke_operator_on_qexp(f, n, k, d+1)
+		for i in 1:d
+			#Tn for the jth element of B corresponds to the jth row
+			matrix[j,i] = coeff(T_f,i)
+		end
+	end
+
+	return matrix
+
+end
 
 
 #Return an array consisting of all divisors of n if n is nonzero, 

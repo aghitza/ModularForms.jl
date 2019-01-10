@@ -137,7 +137,7 @@ end
 function victor_miller_basis(k, prec=10, var="q")
 	
 	vm_basis = victor_miller_basis_poly(k, prec, var)
-	power_series = [big_oh(poly, prec, var) for poly in vm_basis]
+	power_series = [poly_to_power_series(poly, prec) for poly in vm_basis]
 
 	return power_series
 end

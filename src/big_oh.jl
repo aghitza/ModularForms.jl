@@ -1,23 +1,21 @@
-#Construct a relative power series to precision prec (default: 10) from a polynomial f 
-#over the same ring as f in the variable var (default: "q").
-#We assume that the polynomial f is correct up to precision prec. 
-function big_oh(f, prec=10, var="q")
+#Convert the polynomial f to a relative power series with precision
+#prec (default: 10).
+#The power series has the same coefficient ring and variable name as f.
+#We assume that the polynomial f is correct up to precision prec.
+function poly_to_power_series(f, prec=10)
 
-	#initialise 
+	#initialise
 	K = base_ring(f)
-	R, q = PowerSeriesRing(K, prec, var)
-	power_series = R(0)
+  varname = string(gen(parent(f)))
+	R, q = PowerSeriesRing(K, prec, varname)
 
-	if f == 0
-		return power_series
-	end
+  if f == 0
+    return R(0)
+  end
 
-	max_power = min(length(f), prec)
-	max_power = max_power - 1
-	for i in 0:max_power
-		coef = coeff(f,i)
-		power_series += R(coef*q^i)
-	end
+  d = min(degree(f), prec-1)
+  c = [coeff(f, i) for i in 0:d]
+	power_series = R(c, d+1, prec, 0)
 	
-	return power_series
+  return power_series
 end

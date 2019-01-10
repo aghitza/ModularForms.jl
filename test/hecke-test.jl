@@ -3,18 +3,18 @@ include("../src/vm_basis.jl")
 include("../src/hecke.jl")
 
 function test_hecke_on_qexp()
-        print("hecke.qexp...")
+  print("hecke.qexp...")
 	
 	delta = delta_qexp(100)
 	h1 = hecke_operator_on_qexp(delta, 1, 12, 30)
-	@test h1 == delta_qexp(30)
+	@test h1 - delta_qexp(30) == 0
 	h2 = truncate(hecke_operator_on_qexp(delta, 3, 12, 10), 7)
 	S = parent(h2)
 	q = gen(S)
-	@test h2 == 	252q - 6048q^2 + 63504q^3 - 370944q^4 + 
-			1217160q^5 - 1524096q^6 + O(q^7)
+	@test h2 - (252q - 6048q^2 + 63504q^3 - 370944q^4 + 
+			1217160q^5 - 1524096q^6 + O(q^7)) == 0
 
-        println("PASS")
+  println("PASS")
 end
 
 function test_hecke_on_basis()

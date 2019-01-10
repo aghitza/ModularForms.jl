@@ -25,7 +25,7 @@ end
 function delta_qexp(prec=10, var="q", K=ZZ) 
 	
 	delta = delta_poly(prec, var, K)
-	power_series = big_oh(delta, prec, var)
+	power_series = poly_to_power_series(delta, prec)
 
 	return power_series 
 end

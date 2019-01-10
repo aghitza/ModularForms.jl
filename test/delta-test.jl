@@ -32,8 +32,8 @@ function test_delta_qexp_output()
 	delta_5 = delta_qexp(5)
 	S = parent(delta_5)
 	q = gen(S)
-        d5 = q - 24q^2 + 252q^3 - 1472q^4 + O(q^5)
-	@test delta_5 == d5
+  d5 = q - 24q^2 + 252q^3 - 1472q^4 + O(q^5)
+	@test delta_5 - d5 == 0
 
 	delta_45 = delta_qexp(45, "q")
 	S = parent(delta_45)
@@ -49,7 +49,7 @@ function test_delta_qexp_output()
 		80873520*q^35 + 167282496*q^36 - 182213314*q^37 - 255874080*q^38 - 
 		145589976*q^39 + 408038400*q^40 + 308120442*q^41 + 
 		101267712*q^42 - 17125708*q^43 - 786948864*q^44 + O(q^45)
-	@test delta_45 == d45
+	@test delta_45 - d45 == 0
 
 	println("PASS")
 end
@@ -62,7 +62,7 @@ function test_delta_qexp_var()
 	x = gen(S)
 	dx =	x - 24x^2 + 252x^3 - 1472x^4 + 4830x^5 - 6048x^6 - 
 		16744x^7 + 84480x^8 - 113643x^9 + O(x^10)
-	@test delta_x == dx
+	@test delta_x - dx == 0
 
 	println("PASS")
 end

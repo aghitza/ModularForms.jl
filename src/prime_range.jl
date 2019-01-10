@@ -1,5 +1,8 @@
 function prime_range(n)
   primes = fill(true, n)
+  if n == 0
+    return primes
+  end
   primes[1] = false
   for p in 2:n
     primes[p] || continue
@@ -7,5 +10,5 @@ function prime_range(n)
       primes[p*j] = false
     end
   end
-  findall(primes)
+  return findall(primes)
 end

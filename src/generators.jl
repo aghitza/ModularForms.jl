@@ -1,5 +1,5 @@
 include("delta.jl")
-include("eisenstein.jl")
+include("eis_series.jl")
 include("big_oh.jl")
 
 #This file contains functions Delta16, Delta18, Delta20, Delta22, and Delta26 of the 

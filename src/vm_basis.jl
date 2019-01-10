@@ -1,5 +1,5 @@
 include("delta.jl")
-include("eisenstein.jl")
+include("eis_series.jl")
 include("big_oh.jl")
 
 #This file contains functions to compute the dimension of spaces of modular forms or cusp 

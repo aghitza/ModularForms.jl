@@ -71,18 +71,16 @@ end
 function victor_miller_basis_poly(k, prec=10, var="q")
 
 	#error handling
-	if prec < 0 
-		error("prec must be an even nonnegative integer")
-	elseif prec == 0
-		return []
+	if prec <= 0 
+		error("prec must be a positive integer")
 	end
 
 	#simple case
 	if k == 0
-                return [1]
-        elseif k%2 != 0 || k<2
-                return [] 
-        end
+    return [1]
+  elseif k%2 != 0 || k<2
+    return [] 
+  end
 
 	#requirements for integers a,b>=0
 	e = mod(k,12) 		#e = 4a + 6b
@@ -108,10 +106,8 @@ function victor_miller_basis_poly(k, prec=10, var="q")
 		b = 1
 	end
 
-	E4 = eisenstein_series_poly(4, prec)
-	E6 = eisenstein_series_poly(6, prec)
-	F4 = (-8//bernoulli(4))*E4
-        F6 = (-12//bernoulli(6))*E6
+	F4 = eisenstein_series_poly(4, prec)
+	F6 = eisenstein_series_poly(6, prec)
 	
 	#construct a dx1 matrix g where d = dim(Sk)
 	d = dim_Sk(k)

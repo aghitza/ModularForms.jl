@@ -1,6 +1,7 @@
 include("../src/delta.jl")
 include("../src/vm_basis.jl")
 include("../src/hecke.jl")
+include("../src/prime_range.jl")
 
 function test_hecke_on_qexp()
   print("hecke.qexp...")

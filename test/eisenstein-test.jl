@@ -34,7 +34,7 @@ function test_eis_series_coefficients()
   e6 = eisenstein_series_qexp(6, 11, ZZ, "q", "integral")
   S = parent(e6)
   q = gen(S)
-  @test e6 - (-1+504*q+16632*q^2+122976*q^3+532728*q^4+1575504*q^5+4058208*q^6+8471232*q^7+17047800*q^8+29883672*q^9+51991632*q^10+O(q^11)) == 0
+  @test e6 - (1-504*q-16632*q^2-122976*q^3-532728*q^4-1575504*q^5-4058208*q^6-8471232*q^7-17047800*q^8-29883672*q^9-51991632*q^10+O(q^11)) == 0
   e12 = eisenstein_series_qexp(12, 11, QQ, "q", "linear")
   S = parent(e12)
   q = gen(S)

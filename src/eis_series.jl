@@ -55,8 +55,15 @@ end
 #in SageMath
 function eisenstein_series_poly(k, prec=10, var="q")
   a0 = -bernoulli(k) // 2k
-  val = fill(ZZ(a0.den), prec)
-  val[1] = ZZ(a0.num)
+  if a0 > 0
+    d = ZZ(a0.den)
+    n = ZZ(a0.num)
+  else
+    d = -ZZ(a0.den)
+    n = -ZZ(a0.num)
+  end
+  val = fill(d, prec)
+  val[1] = ZZ(n)
   expt = k - 1
   for p in prime_range(prec-1)
     ppow = p

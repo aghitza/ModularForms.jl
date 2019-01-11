@@ -8,6 +8,7 @@ export big_oh
 export delta_poly
 export prime_range
 export victor_miller_basis
+export Delta16, Delta18, Delta20, Delta22, Delta26
 
 include("delta.jl")
 include("eis_series.jl")

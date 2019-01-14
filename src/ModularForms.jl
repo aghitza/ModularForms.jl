@@ -9,6 +9,7 @@ export delta_poly
 export prime_range
 export victor_miller_basis
 export Delta16, Delta18, Delta20, Delta22, Delta26
+export partial_mult, slice
 
 include("delta.jl")
 include("eis_series.jl")
@@ -16,5 +17,6 @@ include("generators.jl")
 include("vm_basis.jl")
 include("hecke.jl")
 include("prime_range.jl")
+include("partial_mult.jl")
 
 end # module

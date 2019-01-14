@@ -1,4 +1,4 @@
-function prime_range(n)
+function prime_range(n::Int)
   primes = fill(true, n)
   if n == 0
     return primes

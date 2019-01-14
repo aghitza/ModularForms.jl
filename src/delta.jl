@@ -11,7 +11,7 @@ export delta_poly, delta_qexp, delta_k_qexp
 
 #Return the q-expansion of the (normalised) cusp form of weight 12 to precision prec 
 #(default: 10) as a polynomial over K (default: ZZ) in the variable var (default: "q"). 
-function delta_poly(prec=10, var="q", K=ZZ)
+function delta_poly(prec::Int=10, var::String="q", K=ZZ)
 
    R, q = PolynomialRing(ZZ, var)
    delta = q*eta_qexp(24, prec-1, q) 
@@ -24,7 +24,7 @@ end
 
 #Return the q-expansion of the (normalised) cusp form of weight 12 to precision prec 
 #(default: 10) as a power series over K (default: ZZ) in the variable var (default: "q").
-function delta_qexp(prec=10, var="q", K=ZZ) 
+function delta_qexp(prec::Int=10, var::String="q", K=ZZ) 
 	
    delta = delta_poly(prec, var, K)
    power_series = poly_to_power_series(delta, prec)
@@ -38,7 +38,7 @@ end
 #for k in [12, 16, 18, 20, 22, 26] as a power series to precision prec (default: 10) 
 #in ZZ[[var]] (default: "q"). These eigenforms are the normalised generators for the
 #six one-dimensional spaces of cusp forms of level 1. 
-function delta_k_qexp(k, prec=10, var="q")
+function delta_k_qexp(k::Int, prec::Int=10, var::String="q")
 
    if k == 12
       return delta_qexp(prec, var, ZZ)

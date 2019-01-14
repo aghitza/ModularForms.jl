@@ -27,7 +27,7 @@ end
 function test_hecke_vm()
 	print("hecke.victormiller...")
 
-	B = victor_miller_basis(24, 20)
+	B = victor_miller_basis(24, 20, true)
 	b1, b2 = B
 	h1 = hecke_operator_on_qexp(b1, 3, 24, 7)
 	S = parent(h1)

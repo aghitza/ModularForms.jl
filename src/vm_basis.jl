@@ -14,18 +14,13 @@ include("big_oh.jl")
 #Algorithm uses Corollary 2.15 and 2.16 from William A. Stein. 
 function dim_Sk(k)
 	
-	#case 1: k is odd or smaller than 14
-	if k%2 != 0 || k<14
-		dim = 0	
-	#case 2: k congruent to 2 (mod 12)
-	elseif mod(k,12) == mod(2,12)
-		dim = floor((k-12)/12)
-	#case 3: k not congruent to 2 (mod 12)
-	else 
-		dim = floor((k-12)/12) + 1
-	end
+   d = dim_Mk(k)
 
-	return Int64(dim) 	#otherwise returns a float
+   if d == 0
+      return 0
+   end
+
+   return d - 1 
 end
 
 

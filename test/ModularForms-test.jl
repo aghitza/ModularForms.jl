@@ -6,6 +6,7 @@ include("victormiller-test.jl")
 include("hecke-test.jl")
 include("prime_range-test.jl")
 include("eta_product-test.jl")
+include("dimensions-test.jl")
 
 function test_all()
    test_big_oh()
@@ -16,4 +17,5 @@ function test_all()
    test_hecke()
    test_prime_range()
    test_eta_product()
+   test_dimensions()
 end

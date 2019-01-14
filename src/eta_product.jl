@@ -1,3 +1,5 @@
+export eta_product
+
 #Return the eta-product relative to the given collection of integers g as a 
 #power series up to precision prec. The output is a cusp form of integral weight.
 #The input g is an array of pairs [[t_1,r_1], [t_2,r_2], ..., [t_s,r_s]] where 

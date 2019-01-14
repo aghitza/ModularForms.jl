@@ -1,4 +1,4 @@
-include("big_oh.jl") 
+include("poly_to_power_series.jl") 
 export delta_poly, delta_qexp
 
 #This file contains the functions delta_poly and delta_qexp which return the q expansion 

@@ -1,6 +1,6 @@
 include("delta.jl")
 include("eis_series.jl")
-include("big_oh.jl")
+include("poly_to_power_series.jl")
 
 #This file contains functions Delta16, Delta18, Delta20, Delta22, and Delta26 of the 
 #corresponding 1D spaces of cusp forms (S_k). Each function returns a power series.

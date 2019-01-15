@@ -1,12 +1,25 @@
 export poly_to_power_series
 
-#Convert the polynomial f to a relative power series with precision
-#prec (default: 10).
-#The power series has the same coefficient ring and variable name as f.
-#We assume that the polynomial f is correct up to precision prec.
+"""
+    poly_to_power_series(f, K, prec=10)
+
+Convert the polynomial `f` over `K` to a relative power series 
+to precision `prec` as a polynomial.
+
+The power series has the same coefficient ring and variable 
+name as f. The input polynomial f must be correct up to 
+precision prec. 
+
+# Arguments
+' `f::PolyElem`: polynomial over K, correct up to prec
+- `K`: base ring of the output
+- `prec::Integer=10`: precision of the output
+
+# Examples still missing
+"""
 function poly_to_power_series(f::PolyElem, K, prec::Int=10)
 
-   #initialise
+   #initialize
    varname = string(gen(parent(f)))
    R, q = PowerSeriesRing(K, prec, varname)
 

@@ -8,9 +8,19 @@ export delta_poly, delta_qexp, delta_k_qexp
 #(one of the six) one-dimensional spaces of cusp forms of weight k and level 1. 
 
 
+"""
+    delta_poly(prec=10, var="q", K=ZZ)
 
-#Return the q-expansion of the (normalised) cusp form of weight 12 to precision prec 
-#(default: 10) as a polynomial over K (default: ZZ) in the variable var (default: "q"). 
+Return the q-expansion of the normalized cusp form of weight 12 to 
+precision `prec` as a polynomial over `K` in the variable `var`. 
+
+# Arguments
+- `prec::Integer=10`: precision of the output 
+- `var::String="q"`: variable name
+- `K=ZZ`: base ring of the output
+
+# Examples still missing
+"""
 function delta_poly(prec::Int=10, var::String="q", K=ZZ)
 
    R, q = PolynomialRing(ZZ, var)
@@ -22,8 +32,19 @@ end
 
 
 
-#Return the q-expansion of the (normalised) cusp form of weight 12 to precision prec 
-#(default: 10) as a power series over K (default: ZZ) in the variable var (default: "q").
+"""
+    delta_qexp(prec=10, var="q", K=ZZ)
+
+Return the q-expansion of the normalized cusp form of weight 12 to 
+precision `prec` as a power series over `K` in the variable `var`. 
+
+# Arguments
+- `prec::Integer=10`: precision of the output 
+- `var::String="q"`: variable name
+- `K=ZZ`: base ring of the output
+
+# Examples still missing
+"""
 function delta_qexp(prec::Int=10, var::String="q", K=ZZ) 
 	
    delta = delta_poly(prec, var, K)
@@ -34,10 +55,23 @@ end
 
 
 
-#Return the q-expansion of the unique normalised eigenform of weight k and level 1
-#for k in [12, 16, 18, 20, 22, 26] as a power series to precision prec (default: 10) 
-#in ZZ[[var]] (default: "q"). These eigenforms are the normalised generators for the
-#six one-dimensional spaces of cusp forms of level 1. 
+"""
+    delta_k_qexp(k, prec=10, var="q")
+
+Return the q-expansion of the unique normalized eigenform of weight 
+`k` and level 1 for k in {12, 16, 18, 20, 22, 26} as a power series 
+to precision `prec` in `var` over ZZ.
+
+These eigenforms are the normalized generators for the six 
+one-dimensional spaces of cusp forms of level 1.  
+
+# Arguments
+- `k::Integer`: weight of the unique normalized eigenform
+- `prec::Integer=10`: precision of the output 
+- `var::String="q"`: variable name
+
+# Examples still missing
+"""
 function delta_k_qexp(k::Int, prec::Int=10, var::String="q")
 
    if k == 12

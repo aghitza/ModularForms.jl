@@ -2,9 +2,21 @@
 include("vm_basis.jl")
 
 
-#Compute the matrix of the Hecke operator Tn of weight k relative to the given basis B 
-#of q-expansions for a space of cusp forms. 
-#NOTE: input B needs to be an array, output is a matrix. 
+
+"""
+    hecke_operator_on_basis(B, n, k) 
+
+Compute the matrix of the Hecke operator T_`n` of weight `k`
+relative to the given basis `B` of q-expansions for a space of 
+modular forms. 
+
+# Arguments
+- `B::Array`: array of q-expansions
+- `n::Integer`: integer >=1 
+- `k::Integer`: weight 
+
+# Examples still missing
+"""
 function hecke_operator_on_basis(B::Array{RelSeriesElem,1}, n::Int, k::Int)
 
    #error handling
@@ -44,8 +56,13 @@ function hecke_operator_on_basis(B::Array{RelSeriesElem,1}, n::Int, k::Int)
 end
 
 
-#Return an array consisting of all divisors of n if n is nonzero, 
-#raise an error otherwise
+
+"""
+    divisors(n)
+
+Return an array consisting of all divisors of `n` if n is 
+nonzero, raise an error otherwise. 
+"""
 function divisors(n::Int)
 
    #error handling
@@ -60,8 +77,22 @@ function divisors(n::Int)
 end
 
 
-#Compute the image of the q-expansion f of a modular form under the Hecke operator Tn 
-#of weight k. Return a power series to precision prec. 
+
+""" 
+    hecke_operator_on_qexp(f, n, k, prec=nothing)
+
+Compute the image of the q-expansion `f` of a modular form under
+the Hecke operator T_`n` of weight `k`. Return a power series to
+precision `prec`. 
+
+# Arguments
+- `f::RelSeriesElem`: q-expansion
+- `n::Integer`: integer >=1 
+- `k::Integer`: weight 
+- `prec::Integer=nothing`: precision of the output
+
+# Examples still missing
+"""
 function hecke_operator_on_qexp(f::RelSeriesElem, n::Int, k::Int, prec::Int=nothing)
 
    max_prec = Int(ceil(f.prec / Int(n)))	#check if works also for n nonprime 

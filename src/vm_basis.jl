@@ -10,8 +10,16 @@ include("poly_to_power_series.jl")
 
 
 
-#Return the dimension of the space of cusp forms of given weight k.
-#Algorithm uses Corollary 2.15 and 2.16 from William A. Stein. 
+"""
+    dim_Sk(k)
+
+Return the dimension of the space of cusp forms of weight `k`. 
+
+The algorithm uses corollary 2.15 and 2.16 from William A. Stein. 
+
+# Argument
+- `k::Integer`: weight of corresponding cuspidal subspace 
+"""
 function dim_Sk(k::Int)
 	
    d = dim_Mk(k)
@@ -21,13 +29,20 @@ function dim_Sk(k::Int)
    end
 
    return d - 1 
-
 end
 
 
 
-#Return the dimension of the space of modular forms of given weight k.
-#Algorithm uses Corollary 2.16 from William A. Stein. 
+"""
+    dim_Mk(k)
+
+Return the dimension of the space of modular forms of weight `k`.
+
+The algorithm uses corollary 2.16 from William A. Stein.
+
+# Argument
+- `k::Integer`: weight of corresponding space of modular forms
+"""
 function dim_Mk(k::Int)
 
    #case 1: k is odd or negative 
@@ -42,16 +57,28 @@ function dim_Mk(k::Int)
    end
 
    return Int64(dim) 	#otherwise returns a float
-
 end
 
 
 
-#Return the Victor Miller basis for modular forms of weight k and level 1 to
-#precision prec (default: 10) as an array whose entries are polynomials in 
-#ZZ[[var]]. If cusp_only (default: false) is true, then return only a basis
-#for the cuspidal subspace. 
-#Algorithm uses the proof of Lemma 2.20 from William A. Stein.  
+"""
+    victor_miller_basis_poly(k, prec=10, cusp_only=false, var="q")
+
+Return the Victor Miller basis for modular forms of weight `k` and 
+level 1 to precision `prec` as an array whose entries are polynomials 
+in ZZ[[`var`]]. If `cusp_only` is true, then return only a basis for
+the cuspidal subspace. 
+
+The algorithm uses the proof of Lemma 2.20 from William A. Stein. 
+
+# Arguments
+- `k::Integer`: weight 
+- `prec::Integer=10`: precision of the output
+- `cusp_only::Boolean=false` 
+- `var::String="q"`: variable name
+
+# Examples still missing
+"""
 function victor_miller_basis_poly(k::Int, prec::Int=10, cusp_only::Bool=false, var::String="q")
 
    #error handling
@@ -115,16 +142,28 @@ function victor_miller_basis_poly(k::Int, prec::Int=10, cusp_only::Bool=false, v
    end
 
    return g
-
 end
 
 
 
-#Return the Victor Miller basis for modular forms of weight k and level 1 to 
-#precision prec (default: 10) as an array whose entries are power series in
-#ZZ[[var]]. If cusp_only (default: false) is true, then return only a basis 
-#for the cuspidal subspace. 
-#Algorithm uses the proof of Lemma 2.20 from William A. Stein. .
+"""
+    victor_miller_basis_poly(k, prec=10, cusp_only=false, var="q")
+
+Return the Victor Miller basis for modular forms of weight `k` and
+level 1 to precision `prec` as an array whose entries are power series
+in ZZ[[`var`]]. If `cusp_only` is true, then return only a basis for
+the cuspidal subspace.
+
+The algorithm uses the proof of Lemma 2.20 from William A. Stein.
+
+# Arguments
+- `k::Integer`: weight
+- `prec::Integer=10`: precision of the output
+- `cusp_only::Boolean=false`
+- `var::String="q"`: variable name
+
+# Examples still missing
+"""
 function victor_miller_basis(k::Int, prec::Int=10, cusp_only::Bool=false, var::String="q")
 
    vm_basis = victor_miller_basis_poly(k, prec, cusp_only, var)

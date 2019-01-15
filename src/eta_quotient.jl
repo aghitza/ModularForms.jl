@@ -1,11 +1,23 @@
 export eta_quotient
 
-#Return the eta-quotient relative to the given collection of integers g as a 
-#power series up to precision prec. The output is a cusp form of integral weight.
-#The input g is an array of pairs [[t_1,r_1], [t_2,r_2], ..., [t_s,r_s]] where 
-#each t_j is a positive integer and each r_j a nonnegative integer. 
-#An error is thrown if the sum of t_j*r_j for j in (1,...,s) does not equal 24, 
-#since the function only applies to eta-quotients that are cusp forms.  
+"""
+    eta_quotient(g, prec=10)
+
+Return the eta-quotient relative to the given collection of integers
+`g` as a power series up to precision `prec`. 
+
+The input g is an array of pairs [[t_1,r_1], [t_2,r_2], ..., [t_s,r_s]] 
+where each t_j is a positive integer and each r_j a nonnegative integer. 
+An error is thrown if the sum of t_j*r_j for j in {1, ..., s} does not
+equal 24, as the function only applies to eta-quotients that are cusp
+forms. The output is a cusp form of integral weight.  
+
+# Arguments
+- `g::Array{Array}`: an array of pairs, collection of integers
+- `prec::Integer=10`: precision of the output
+
+# Examples still missing
+""" 
 function eta_quotient(g::Array{Array{Int,1},1}, prec::Int=10)
 
    R, q = PolynomialRing(ZZ, "q")

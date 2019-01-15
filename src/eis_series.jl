@@ -1,13 +1,28 @@
-#Return the q-expansion of the normalised weight k Eisenstein series on the modular group 
-#to precision prec (default: 10) in the ring K (default: QQ) in the variable var (default: 
-#"q"). Three normalizations are available: "linear" (default), "constant", and 
-#"integral".
-#If the normalization is "linear" then the linear coefficient is 1. If it is "constant" 
-#then the series will be normalized to have constant term 1. If the normalization is 
-#"integral" then the series will be normalized to have integer coefficients and no 
-#common factors. 
-#NOTE: The output (q-expansion) will be in the ring QQ if the normalization is "linear"  
-#or "constant" to prevent errors.  
+"""
+    eisenstein_series_qexp(k, prec=10, K=QQ, var="q", normalization="linear")
+
+Return the q-expansion of the normalized weight `k` Eisenstein series 
+on the modular group to precision `prec` as a power series in the ring 
+`K` in variable `var`, using the given `normalization`. 
+
+Three normalizations are available: "linear" (default), "constant", 
+and "integral". If the normalization is "linear" then the linear 
+coefficient is 1. If it is "constant" then the series will be 
+normalized to have constant term 1. If the normalization is "integral"
+then the series will be normalized to have integer coefficients and no 
+common factors. 
+Note: To prevent errors, the output will be in the ring QQ if the 
+normalization is "linear" or "constant".
+
+# Arguments
+- `k::Integer`: even positive integer, weight of the Eisenstein series
+- `prec::Integer=10`: precision of the output 
+- `K=ZZ`: base ring of the output 
+- `var::String="q"`: variable name
+- `normalization::String="linear"`: normalization to use
+
+# Examples still missing
+"""
 function eisenstein_series_qexp(k::Int, prec::Int=10, K=QQ, var::String="q", normalization::String="linear") 
 
    #error handling with regard to input ring
@@ -46,13 +61,24 @@ end
 
 
 
-#Return the q-expansion up to precision prec (default: 10) of the weight
-#k Eisenstein series as a polynomial over ZZ of degree prec-1 in the
-#variable var (default: "q"). 
-#The polynomial is normalized to have integer coefficients and no 
-#common factors. 
-#The algorithm is taken from the implementation of eisenstein_series_poly
-#in SageMath
+"""
+    eisenstein_series_poly(k, prec=10, var="q")
+
+Return the q-expansion of the weight `k` Eisenstein series up to
+precision `prec` as a polynomial over ZZ of degree prec-1 in the 
+variable `var`. The polynomial is normalized to have integer 
+coefficients and no common factors. 
+
+The algorithm is taken from the SageMath implementation of 
+eisenstein_series_poly. 
+
+# Arguments
+- `k::Integer`: even positive integer, weight of the Eisenstein series
+- `prec::Integer=10`: precision of the output
+- `var::String="q"`: variable name
+
+# Examples still missing
+"""
 function eisenstein_series_poly(k::Int, prec::Int=10, var::String="q")
    a0 = -bernoulli(k) // 2k
    if a0 > 0

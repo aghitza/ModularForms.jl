@@ -1,3 +1,5 @@
+export poly_to_power_series
+
 #Convert the polynomial f to a relative power series with precision
 #prec (default: 10).
 #The power series has the same coefficient ring and variable name as f.

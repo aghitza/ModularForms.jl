@@ -15,7 +15,7 @@ function eta_product(g, prec=10)
    for i in 1:s
       t = g[i][1]
       r = g[i][2]
-      poly = poly * eta_qexp(1, prec, q^t)^r	#check prec
+      poly = poly * eta_qexp(r, prec, q^t)	#check prec
       sum += t*r 
    end
 

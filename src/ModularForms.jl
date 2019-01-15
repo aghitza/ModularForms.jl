@@ -20,4 +20,13 @@ include("hecke.jl")
 include("prime_range.jl")
 include("eta_quotient.jl")
 
+export func
+
+"""
+    func(x)
+
+Return func
+""" 
+func(x) = 2x + 1 
+
 end # module

@@ -4,22 +4,22 @@
 #We assume that the polynomial f is correct up to precision prec.
 function poly_to_power_series(f, K, prec=10)
 
-	#initialise
-  varname = string(gen(parent(f)))
-	R, q = PowerSeriesRing(K, prec, varname)
+   #initialise
+   varname = string(gen(parent(f)))
+   R, q = PowerSeriesRing(K, prec, varname)
 
-  if f == 0
-    return R(0)
-  end
+   if f == 0
+      return R(0)
+   end
 
-  d = min(degree(f), prec-1)
-  c = [coeff(f, i) for i in 0:d]
-	power_series = R(c, d+1, prec, 0)
-	
-  return power_series
+   d = min(degree(f), prec-1)
+   c = [coeff(f, i) for i in 0:d]
+   power_series = R(c, d+1, prec, 0)
+
+   return power_series
 end
 
 
 function poly_to_power_series(f, prec=10)
-  return poly_to_power_series(f, base_ring(f), prec)
+   return poly_to_power_series(f, base_ring(f), prec)
 end

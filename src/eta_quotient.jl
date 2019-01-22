@@ -1,12 +1,12 @@
-export eta_product
+export eta_quotient
 
-#Return the eta-product relative to the given collection of integers g as a 
+#Return the eta-quotient relative to the given collection of integers g as a 
 #power series up to precision prec. The output is a cusp form of integral weight.
 #The input g is an array of pairs [[t_1,r_1], [t_2,r_2], ..., [t_s,r_s]] where 
 #each t_j is a positive integer and each r_j a nonnegative integer. 
 #An error is thrown if the sum of t_j*r_j for j in (1,...,s) does not equal 24, 
-#since the function only applies to eta-products that are cusp forms.  
-function eta_product(g, prec=10)
+#since the function only applies to eta-quotients that are cusp forms.  
+function eta_quotient(g, prec=10)
 
    R, q = PolynomialRing(ZZ, "q")
    poly = R(1)		#product

@@ -6,7 +6,7 @@ export eta_quotient
 #each t_j is a positive integer and each r_j a nonnegative integer. 
 #An error is thrown if the sum of t_j*r_j for j in (1,...,s) does not equal 24, 
 #since the function only applies to eta-quotients that are cusp forms.  
-function eta_quotient(g, prec=10)
+function eta_quotient(g::Array{Array{Int,1},1}, prec::Int=10)
 
    R, q = PolynomialRing(ZZ, "q")
    poly = R(1)		#product

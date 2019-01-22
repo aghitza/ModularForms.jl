@@ -12,7 +12,7 @@ include("poly_to_power_series.jl")
 
 #Return the dimension of the space of cusp forms of given weight k.
 #Algorithm uses Corollary 2.15 and 2.16 from William A. Stein. 
-function dim_Sk(k)
+function dim_Sk(k::Int)
 	
    d = dim_Mk(k)
 
@@ -21,13 +21,14 @@ function dim_Sk(k)
    end
 
    return d - 1 
+
 end
 
 
 
 #Return the dimension of the space of modular forms of given weight k.
 #Algorithm uses Corollary 2.16 from William A. Stein. 
-function dim_Mk(k)
+function dim_Mk(k::Int)
 
    #case 1: k is odd or negative 
    if k%2 != 0 || k<0
@@ -41,6 +42,7 @@ function dim_Mk(k)
    end
 
    return Int64(dim) 	#otherwise returns a float
+
 end
 
 
@@ -50,7 +52,7 @@ end
 #ZZ[[var]]. If cusp_only (default: false) is true, then return only a basis
 #for the cuspidal subspace. 
 #Algorithm uses the proof of Lemma 2.20 from William A. Stein.  
-function victor_miller_basis_poly(k, prec=10, cusp_only=false, var="q")
+function victor_miller_basis_poly(k::Int, prec::Int=10, cusp_only::Bool=false, var::String="q")
 
    #error handling
    if prec <= 0 
@@ -88,8 +90,8 @@ function victor_miller_basis_poly(k, prec=10, cusp_only=false, var="q")
       b = 1
    end
 
-   F4 = eisenstein_series_poly(4, prec)
-   F6 = eisenstein_series_poly(6, prec)
+   F4 = eisenstein_series_poly(4, prec, var)
+   F6 = eisenstein_series_poly(6, prec, var)
 	
    #construct a dx1 matrix g where d = dim(Sk)
    d = dim_Sk(k)
@@ -97,7 +99,7 @@ function victor_miller_basis_poly(k, prec=10, cusp_only=false, var="q")
       return []
    end
 
-   g = [truncate((delta_poly(prec)^j)*(F6^(2(d-j)+b))*(F4^a),prec) for j in 1:d]
+   g = [truncate((delta_poly(prec,var)^j)*(F6^(2(d-j)+b))*(F4^a),prec) for j in 1:d]
    for i in 2:d
       for j in 1:i-1
          g[j] = g[j] - coeff(g[j],i)*g[i]
@@ -113,6 +115,7 @@ function victor_miller_basis_poly(k, prec=10, cusp_only=false, var="q")
    end
 
    return g
+
 end
 
 
@@ -122,8 +125,8 @@ end
 #ZZ[[var]]. If cusp_only (default: false) is true, then return only a basis 
 #for the cuspidal subspace. 
 #Algorithm uses the proof of Lemma 2.20 from William A. Stein. .
-function victor_miller_basis(k, prec=10, cusp_only=false, var="q")
-	
+function victor_miller_basis(k::Int, prec::Int=10, cusp_only::Bool=false, var::String="q")
+
    vm_basis = victor_miller_basis_poly(k, prec, cusp_only, var)
    power_series = [poly_to_power_series(poly, prec) for poly in vm_basis]
 

@@ -2,7 +2,7 @@
 #prec (default: 10).
 #The power series has the same coefficient ring and variable name as f.
 #We assume that the polynomial f is correct up to precision prec.
-function poly_to_power_series(f, K, prec=10)
+function poly_to_power_series(f::PolyElem, K, prec::Int=10)
 
    #initialise
    varname = string(gen(parent(f)))
@@ -20,6 +20,6 @@ function poly_to_power_series(f, K, prec=10)
 end
 
 
-function poly_to_power_series(f, prec=10)
+function poly_to_power_series(f::PolyElem, prec::Int=10)
    return poly_to_power_series(f, base_ring(f), prec)
 end

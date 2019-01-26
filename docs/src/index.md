@@ -1,5 +1,15 @@
-# ModularForms.jl Documentation 
+# ModularForms.jl Documentation
+
+```@contents
+```
+
+## Functions
 
 ```@docs
-func(x)
+delta_qexp
+```
+
+## Index
+
+```@index
 ```

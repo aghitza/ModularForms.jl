@@ -1,5 +1,3 @@
-export eta_quotient
-
 """
     eta_quotient(g, prec=10)
 

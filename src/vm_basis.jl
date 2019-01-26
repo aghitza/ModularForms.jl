@@ -1,7 +1,3 @@
-include("delta.jl")
-include("eis_series.jl")
-include("poly_to_power_series.jl")
-
 #This file contains functions to compute the dimension of spaces of modular forms or
 #cusp forms, and a function to compute the Victor Miller basis for a given weight k
 #to any desired precision (both in terms of polynomials and in terms of power series).

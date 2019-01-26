@@ -1,5 +1,3 @@
-export poly_to_power_series
-
 """
     poly_to_power_series(f, K, prec=10)
 

@@ -1,3 +1,5 @@
+using ModularForms
+
 include("poly_to_power_series-test.jl")
 include("delta-test.jl")
 include("eisenstein-test.jl")

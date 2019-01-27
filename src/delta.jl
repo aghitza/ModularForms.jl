@@ -1,6 +1,3 @@
-include("poly_to_power_series.jl") 
-export delta_poly, delta_qexp, delta_k_qexp
-
 #This file contains the functions delta_poly and delta_qexp which return the 
 #q-expansion of delta (the weight 12 level 1 cusp form) as a polynomial or 
 #powerseries (respectively). Moreover, this file contains the function 

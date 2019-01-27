@@ -1,5 +1,4 @@
 #This file contains the functions hecke_operator_on_basis and hecke_operator_on_qexp. 
-include("vm_basis.jl")
 
 
 
@@ -17,7 +16,7 @@ modular forms.
 
 # Examples still missing
 """
-function hecke_operator_on_basis(B::Array{RelSeriesElem,1}, n::Int, k::Int)
+function hecke_operator_on_basis(B::Array{fmpz_rel_series,1}, n::Int, k::Int)
 
    #error handling
    if n < 1
@@ -93,7 +92,7 @@ precision `prec`.
 
 # Examples still missing
 """
-function hecke_operator_on_qexp(f::RelSeriesElem, n::Int, k::Int, prec::Int=nothing)
+function hecke_operator_on_qexp(f::fmpz_rel_series, n::Int, k::Int, prec::Union{Int, Nothing}=nothing)
 
    max_prec = Int(ceil(f.prec / Int(n)))	#check if works also for n nonprime 
    if prec == nothing

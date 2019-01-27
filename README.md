@@ -1,6 +1,7 @@
 # ModularForms.jl
 implementation of modular forms algorithms in Julia
 
+[![Build Status](https://travis-ci.com/aghitza/ModularForms.jl.svg?token=4eYZ5pNRM3xWQ7BDeyVi&branch=master)](https://travis-ci.org/aghitza/ModularForms.jl)
 
 ## Getting started
 

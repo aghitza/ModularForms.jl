@@ -1,3 +1,3 @@
 using Documenter, ModularForms
 
-makedocs(sitename="Modular Forms!")
+makedocs(sitename="ModularForms.jl: computation with modular forms in Julia")

@@ -1,3 +1,8 @@
+# This file is part of the Julia package ModularForms.jl
+#
+# Copyright (c) 2018-2019: Lynn Engelberts and Alexandru Ghitza.
+
+
 """
     eisenstein_series_qexp(k, prec=10, K=QQ, var="q", normalization="linear")
 

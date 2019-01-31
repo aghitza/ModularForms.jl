@@ -1,3 +1,8 @@
+# This file is part of the Julia package ModularForms.jl
+#
+# Copyright (c) 2018-2019: Lynn Engelberts and Alexandru Ghitza.
+
+
 #This file contains the functions delta_poly and delta_qexp which return the 
 #q-expansion of delta (the weight 12 level 1 cusp form) as a polynomial or 
 #powerseries (respectively). Moreover, this file contains the function 

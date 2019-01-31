@@ -1,3 +1,8 @@
+# This file is part of the Julia package ModularForms.jl
+#
+# Copyright (c) 2018-2019: Lynn Engelberts and Alexandru Ghitza.
+
+
 # List of normalised generators for the six one-dimensional
 # spaces of cusp forms of level 1.
 

@@ -8,7 +8,7 @@ BSD 2-Clause "Simplified" License:
 
 > BSD 2-Clause License
 >
-> Copyright (c) 2018-2019, Lynn Engelberts, Alexandru Ghitza.
+> Copyright (c) 2018-2019: Lynn Engelberts and Alexandru Ghitza.
 > All rights reserved.
 >
 > Redistribution and use in source and binary forms, with or without

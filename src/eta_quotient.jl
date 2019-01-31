@@ -1,3 +1,8 @@
+# This file is part of the Julia package ModularForms.jl
+#
+# Copyright (c) 2018-2019: Lynn Engelberts and Alexandru Ghitza.
+
+
 """
     eta_quotient(g, prec=10)
 

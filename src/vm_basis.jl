@@ -1,3 +1,8 @@
+# This file is part of the Julia package ModularForms.jl
+#
+# Copyright (c) 2018-2019: Lynn Engelberts and Alexandru Ghitza.
+
+
 #This file contains functions to compute the dimension of spaces of modular forms or
 #cusp forms, and a function to compute the Victor Miller basis for a given weight k
 #to any desired precision (both in terms of polynomials and in terms of power series).

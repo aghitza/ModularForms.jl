@@ -1,3 +1,8 @@
+# This file is part of the Julia package ModularForms.jl
+#
+# Copyright (c) 2018-2019: Lynn Engelberts and Alexandru Ghitza.
+
+
 # (Incomplete) list of eta quotients that are Hecke eigenforms,
 # from the table on pages 4852--4854 of Yves Martin, Multiplicative
 # eta-quotients, Transactions of the AMS, vol 348, no 12, 1996.
